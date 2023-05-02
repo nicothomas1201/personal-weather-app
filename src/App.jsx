@@ -9,10 +9,12 @@ function App() {
   const currentWeather = useSelector( state => state.weather.currentWeather )
   const dispatch = useDispatch()
 
-  dispatch(fetchCurrentWeather())
+
   useEffect(() => {
-    console.log(currentWeather)
-  }, [currentWeather])
+    dispatch(fetchCurrentWeather())
+  }, [])
+
+  
 
   return (
     <Layout>

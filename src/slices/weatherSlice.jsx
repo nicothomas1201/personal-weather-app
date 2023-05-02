@@ -8,7 +8,7 @@ const initialState = {
 
 export const fetchCurrentWeather = createAsyncThunk(
   'data/current-weather',
-  async (_ , dispatch) => {
+  async (_ , { dispatch }) => {
     const { lat, lon } = await getLatLon()
     const data = await getCurrentWeather(lat, lon)
     dispatch(setCurrentWeather(data))
