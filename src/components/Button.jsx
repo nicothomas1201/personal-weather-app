@@ -21,10 +21,10 @@ const ButtonIcon = styled.button`
   vertical-align: middle;
 `
 
-function Button({ type, text, icon }) {
+function Button({ type, text, icon, onClick }) {
   switch(type) {
     case 'icon': {
-      return <ButtonIcon>
+      return <ButtonIcon onClick={onClick}>
         {icon}
         {text}
       </ButtonIcon>
@@ -32,7 +32,7 @@ function Button({ type, text, icon }) {
 
     default: {
       return (
-        <ButtonStyled>
+        <ButtonStyled onClick={onClick}>
           {icon}
           {text}
         </ButtonStyled>
