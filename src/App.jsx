@@ -1,33 +1,29 @@
 import Layout from "./components/Layout"
 import Sidebar from "./components/Sidebar"
 import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import {  useDispatch } from "react-redux"
 import { fetchCurrentWeather } from "./slices/weatherSlice"
-import { getIconWeather } from "./utils/get-icon-weather"
+import { useSelector } from "react-redux"
 
 
 function App() {
-  const currentWeather = useSelector( state => state.weather.currentWeather )
+  const loading = useSelector(state => state.ui.loading)
   const dispatch = useDispatch()
 
 
   useEffect(() => {
     dispatch(fetchCurrentWeather())
-  }, [])
+  }, []) 
 
-  useEffect(() => {
-    console.log(currentWeather)
-    let url = getIconWeather(currentWeather)
-    console.log(url)
-  }, [currentWeather])
+  if(!loading){
+    return (
+      <Layout>
+        <Sidebar />
+      </Layout>
+    )
+  } 
 
-  
-
-  return (
-    <Layout>
-      <Sidebar />
-    </Layout>
-  )
+  return <span>Loading...</span>
 }
 
 export default App

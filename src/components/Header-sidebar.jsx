@@ -6,6 +6,7 @@ const HeaderSidebarStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  inline-size: 100%;
 `
 
 function HeaderSidebar() {

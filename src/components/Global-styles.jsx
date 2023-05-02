@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`
     --body-16: 500 16px/19px Raleway;
     --body-18-bold: 700 18px/21.13px Raleway;
     --heading-36: 600 36px/42.26px Raleway;
+    --heading-48: 100 48px/56.35px Raleway;
+    --heading-big: 500 144px/169.06px Raleway;
     --body-24-bold: 700 24px/28.18 Raleway;
   }
 
