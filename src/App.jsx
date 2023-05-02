@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { fetchCurrentWeather } from "./slices/weatherSlice"
+import { getIconWeather } from "./utils/get-icon-weather"
 
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchCurrentWeather())
   }, [])
+
+  useEffect(() => {
+    console.log(currentWeather)
+    let url = getIconWeather(currentWeather)
+    console.log(url)
+  }, [currentWeather])
 
   
 
