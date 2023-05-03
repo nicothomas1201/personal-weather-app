@@ -9,9 +9,9 @@ async function getCurrentWeather(lat, lon){
   }
 }
 
-async function getWeeklyWeather(lat, lon){
+async function getWeeklyWeather(lat, lon, cnt = 5){
   try{
-    const response = await fetch(`${BASE_API}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+    const response = await fetch(`${BASE_API}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&unit=metric&cnt=${cnt}`)
     return response.json()
   } catch(err){
     throw new Error('cannot get weekly weather')

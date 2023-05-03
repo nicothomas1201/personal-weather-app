@@ -39,6 +39,7 @@ const weatherSlice = createSlice({
       state.currentWeather = action.payload
     },
     setWeeklyWeather: (state, action) => {
+      // console.log(action.payload)
       state.weeklyWeather = action.payload
     }
   }

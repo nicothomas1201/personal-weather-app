@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import {  useDispatch } from "react-redux"
 import { fetchCurrentWeather, fectchWeeklyWeather } from "./slices/weatherSlice"
 import { useSelector } from "react-redux"
-import WeeklyForecastList from "./components/Weekly-forecast.-list"
+import WeeklyForecastList from "./components/Weekly-forecast-list"
 
 
 function App() {
