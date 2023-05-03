@@ -1,20 +1,33 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import { getLatLon } from "../utils/geolocation";
-import { getCurrentWeather } from "../services";
+import { getCurrentWeather, getWeeklyWeather } from "../services";
 import { setLoading } from './uiSlice'
 
 const initialState = {
-  currentWeather: {}
+  currentWeather: {},
+  weeklyWeather: []
 }
 
 export const fetchCurrentWeather = createAsyncThunk(
   'data/current-weather',
-  async (_ , { dispatch, state }) => {
+  async (_ , { dispatch }) => {
     dispatch(setLoading(true))
     const { lat, lon } = await getLatLon()
     const data = await getCurrentWeather(lat, lon)
     dispatch(setCurrentWeather(data))
     dispatch(setLoading(false))
+  }
+)
+
+export const fectchWeeklyWeather = createAsyncThunk(
+  'data/weekly-weather',
+  async (_ , { dispatch }) => {
+    dispatch(setLoading(true))
+    const { lat, lon } = await getLatLon()
+    const data = await getWeeklyWeather(lat, lon)
+    dispatch(setWeeklyWeather(data))
+    dispatch(setLoading(false))
+
   }
 )
 
@@ -24,9 +37,12 @@ const weatherSlice = createSlice({
   reducers: {
     setCurrentWeather: (state, action) => {
       state.currentWeather = action.payload
+    },
+    setWeeklyWeather: (state, action) => {
+      state.weeklyWeather = action.payload
     }
   }
 })
 
-export const { setCurrentWeather } = weatherSlice.actions
+export const { setCurrentWeather, setWeeklyWeather } = weatherSlice.actions
 export default weatherSlice.reducer

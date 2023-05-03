@@ -1,1 +1,1 @@
-export { getCurrentWeather } from './weather'
+export { getCurrentWeather, getWeeklyWeather } from './weather'
