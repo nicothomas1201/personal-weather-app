@@ -13,21 +13,11 @@ export const fetchCurrentWeather = createAsyncThunk(
   async (_ , { dispatch }) => {
     dispatch(setLoading(true))
     const { lat, lon } = await getLatLon()
-    const data = await getCurrentWeather(lat, lon)
-    dispatch(setCurrentWeather(data))
+    const currentWeather = await getCurrentWeather(lat, lon)
+    const weeklyWeather = await getWeeklyWeather(lat, lon)
+    dispatch(setWeeklyWeather(weeklyWeather))
+    dispatch(setCurrentWeather(currentWeather))
     dispatch(setLoading(false))
-  }
-)
-
-export const fectchWeeklyWeather = createAsyncThunk(
-  'data/weekly-weather',
-  async (_ , { dispatch }) => {
-    dispatch(setLoading(true))
-    const { lat, lon } = await getLatLon()
-    const data = await getWeeklyWeather(lat, lon)
-    dispatch(setWeeklyWeather(data))
-    dispatch(setLoading(false))
-
   }
 )
 
@@ -39,7 +29,6 @@ const weatherSlice = createSlice({
       state.currentWeather = action.payload
     },
     setWeeklyWeather: (state, action) => {
-      // console.log(action.payload)
       state.weeklyWeather = action.payload
     }
   }
