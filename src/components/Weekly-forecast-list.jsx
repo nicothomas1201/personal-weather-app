@@ -11,8 +11,8 @@ function WeeklyForecastList() {
 
   return (
     <WeeklyForecastListStyled>
-      {weeklyWeather.list ? weeklyWeather.list.map( data => {
-        return <WeeklyForecastCard data={data} />
+      {weeklyWeather.list ? weeklyWeather.list.map( (data, index) => {
+        return <WeeklyForecastCard key={index} data={data} />
       }) : 'loading'}
       
     </WeeklyForecastListStyled>

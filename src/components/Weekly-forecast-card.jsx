@@ -7,7 +7,7 @@ const WeeklyForecastCardStyled = styled.div`
 
 function WeeklyForecastCard({ data }) {
   useEffect(() => {
-    console.log(data)
+    // console.log(data)
   })
   return (
     <WeeklyForecastCardStyled>
