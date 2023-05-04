@@ -15,18 +15,14 @@ async function getWeeklyWeather(lat, lon, cnt = 5){
     const response = await fetch(`${BASE_API}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&unit=metric`)
     const { list } = await response.json()
     let newList = []
-    // console.log(list)
+
     for(let i = 1; i <= 5; i++){
       let nextDayDate = moment().add(i, 'days').format('YYYY-MM-DD')
-      // console.log(nextDayDate)
-      // let newItem = list.find( item => console.log(item.dt_txt.include(nextDayDate)))
-      // console.log(newItem)
-      // newList.push(newItem)
+      let newItem = list.find( item => item.dt_txt.includes(nextDayDate))
+      newList.push(newItem)
     }
 
-    console.log(newList)
-
-    return response.json()
+    return newList
   } catch(err){
     throw new Error('cannot get weekly weather')
   }
