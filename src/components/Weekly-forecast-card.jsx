@@ -4,21 +4,30 @@ import moment from 'moment/moment'
 import { useState } from 'react'
 
 const WeeklyForecastCardStyled = styled.div`
+  block-size: 177px;
+  /* inline-size: 100%; */
+  padding: 18px 22px;
+  background-color: var(--black-10);
+
+  .day-title{
+    font: var(--body-16);
+    color: var(--white-10);
+  }
 
 `
 
 function WeeklyForecastCard({ data }) {
-  const [date, setDate] = useState(data.dt_txt)
+  const [date, setDate] = useState()
 
 
   useEffect(() => {
-    if(parseInt(moment(date).format('D')) === parseInt(moment().format('D')) + 1){
+    if(parseInt(moment(data.dt_txt).format('D')) === parseInt(moment().format('D')) + 1){
       setDate('Tomorrow')
     } else {
-      setDate(moment(date).format('ddd, D MMM '))
-    }
-    
+      setDate(moment(data.dt_txt).format('ddd, D MMM '))
+    }    
   }, [data.dt_txt])
+
   return (
     <WeeklyForecastCardStyled>
       <h3 className='day-title'>{date}</h3>
