@@ -5,6 +5,7 @@ import {  useDispatch } from "react-redux"
 import { fetchCurrentWeather } from "./slices/weatherSlice"
 import { useSelector } from "react-redux"
 import WeeklyForecastList from "./components/Weekly-forecast-list"
+import Wrapper from "./components/Wrapper"
 
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
     return (
       <Layout>
         <Sidebar />
-        <WeeklyForecastList />        
+        <Wrapper>
+          <WeeklyForecastList />        
+        </Wrapper>
       </Layout>
     )
   } 

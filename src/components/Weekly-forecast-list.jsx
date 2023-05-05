@@ -5,8 +5,6 @@ import WeeklyForecastCard from './Weekly-forecast-card'
 const WeeklyForecastListStyled = styled.div`
   display: flex;
   gap: 26px;
-  inline-size: 125px;
-  inline-size: 100%;
   margin: auto;
   inline-size: 100%;
 `
